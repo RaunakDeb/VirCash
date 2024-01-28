@@ -1,4 +1,4 @@
-package com.vircash.p2p_network;
+package com.vircash.mining;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
