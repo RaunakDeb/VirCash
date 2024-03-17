@@ -11,14 +11,14 @@ public class GetSocketConnection extends Thread{
     {
         while(true)
         {
-            socketConnection= ServerCodeInNode.sendSocketConnection();
+//            socketConnection= ServerCodeInNode.sendSocketConnection();
             System.out.println("Connections: "+socketConnection);
-            try {
-                Thread.sleep(4000);
-            }
-            catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+//            try {
+//                Thread.sleep(4000);
+//            }
+//            catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
 //            if(socketConnection!=null)
 //                break;
         }

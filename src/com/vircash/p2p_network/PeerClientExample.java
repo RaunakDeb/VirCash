@@ -11,42 +11,33 @@ public class PeerClientExample {
 
     Socket peerSocketOrPeerIPAddress;
 
-    public List<Socket> getPeerSocketOrPeerIPAddressList() {
-        return peerSocketOrPeerIPAddressList;
-    }
-
-    public void setPeerSocketOrPeerIPAddressList(List<Socket> peerSocketOrPeerIPAddressList) {
-        this.peerSocketOrPeerIPAddressList = peerSocketOrPeerIPAddressList;
-    }
-
-    List<Socket> peerSocketOrPeerIPAddressList;
-
-
-
 //    public PeerClientExample(int sourcePort, int destinationPort) {
 //        this.sourcePort = sourcePort;
 //        this.destinationPort = destinationPort;
 //    }
 
-    public void runClient(int destinationPort)
+    public void runClient(int destinationPort,String message)
     {
 
         try  {
-            List<Socket> peerIPAddressList=new ArrayList<Socket>();
+
             peerSocketOrPeerIPAddress = new Socket("localhost", destinationPort);
-            peerIPAddressList.add(peerSocketOrPeerIPAddress);
-            setPeerSocketOrPeerIPAddressList(peerIPAddressList);
-//            setPeerSocketOrPeerIPAddress(peerSocketOrPeerIPAddress);
-//            PrintWriter writer = new PrintWriter(peerSocketOrPeerIPAddress.getOutputStream(), true);
+            PrintWriter writer = new PrintWriter(peerSocketOrPeerIPAddress.getOutputStream(), true);
 //            BufferedReader reader = new BufferedReader(new InputStreamReader(peerSocketOrPeerIPAddress.getInputStream()));
 //            BufferedReader readerOut = new BufferedReader(new InputStreamReader(peerSocketOrPeerIPAddress.getInputStream()));
 
 //            Scanner scanner=new Scanner(System.in);
 //            System.out.print("Enter message to send: ");
 //            String input=scanner.nextLine();
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter the message to send to the server: ");
+//            String messageToSend = scanner.nextLine();
+            writer.println(message);
 
             // Example: Sending a message from the client
-//            writer.println("MSG");
+//            writer.write(msg);
+//            Thread receiverThread = new Thread(new PeerReceiver(peerSocketOrPeerIPAddress));
+//            receiverThread.start();
             // Example: Receiving a message from the server
 //            String serverResponse = reader.readLine();
 //            System.out.println("Node " + destinationPort + " says: " + serverResponse);

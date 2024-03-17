@@ -16,9 +16,12 @@ class PeerReceiver implements Runnable {
     public void run() {
         try  {
             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            while (true) {
+            while (true)
+            {
                 String receivedMessage = reader.readLine();
-                System.out.println("Received message: " + receivedMessage);
+                if(receivedMessage!=null) {
+                    System.out.println("At "+socket+" is : " + receivedMessage);
+                }
 //                break;
             }
         } catch (IOException e) {

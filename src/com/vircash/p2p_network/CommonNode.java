@@ -44,6 +44,7 @@ public class CommonNode {
         serverThread.start();
         System.out.println("This node is exposed as a Server on port " + port);
 
+
         System.out.print("Enter your port number for node 1: ");
         Scanner sc=new Scanner(System.in);
         int port1=sc.nextInt();
@@ -51,31 +52,36 @@ public class CommonNode {
         System.out.print("Enter your port number for node 2: ");
         int port2=sc.nextInt();
 
-        sc.close();
-
         allNodesPortsList.add(port1);
         allNodesPortsList.add(port2);
 
-        for (int i = 0; i < allNodesPortsList.size(); i++)
-        {
-            if (port != allNodesPortsList.get(i))
+        System.out.println("Enter message to send to peers: ");
+        String msg=sc.nextLine();
+
+        sc.close();
+
+        if(msg!=null){
+            for (int i = 0; i < allNodesPortsList.size(); i++)
             {
-                final int finalOtherPort = allNodesPortsList.get(i); // Make it final
-                Thread clientThread = new Thread(new Runnable()
+                if (port != allNodesPortsList.get(i))
                 {
-                    @Override
-                    public void run() {
-                        new PeerClientExample().runClient(finalOtherPort);
-                    }
-                });
-                clientThread.start();
+                    final int finalOtherPort = allNodesPortsList.get(i); // Make it final
+                    Thread clientThread = new Thread(new Runnable()
+                    {
+                        @Override
+                        public void run() {
+                            new PeerClientExample().runClient(finalOtherPort,msg);
+                        }
+                    });
+                    clientThread.start();
 //                peersIPAddresses=new PeerClientExample().peerSocketOrPeerIPAddressList;
+                }
             }
         }
 
-        System.out.println("Connected to nodes: "+allNodesPortsList);
-        new GetSocketConnection().start();
-        System.out.println("Peers IP Addresses: "+new PeerClientExample().getPeerSocketOrPeerIPAddressList());
+//        System.out.println("Connected to nodes: "+allNodesPortsList);
+//        new GetSocketConnection().start();
+//        System.out.println("Peers IP Addresses: "+new PeerClientExample().getPeerSocketOrPeerIPAddressList());
 
     }
 }

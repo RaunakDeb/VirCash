@@ -24,9 +24,10 @@ class PeerSender implements Runnable {
                 System.out.print("Enter message to send: ");
                 String message = userInputScanner.nextLine();
                 writer.println(message);
+                writer.close();
 
-            Thread receiverThread = new Thread(new PeerReceiver(socket));
-            receiverThread.start();
+//            Thread receiverThread = new Thread(new PeerReceiver(socket));
+//            receiverThread.start();
 //            }
         }
         catch (Exception e) {
